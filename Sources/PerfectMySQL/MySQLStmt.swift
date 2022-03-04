@@ -10,7 +10,10 @@
 #else
 	import Darwin
 #endif
+
 import mysqlclient
+
+typealias my_bool = CBool
 
 /// handles mysql prepared statements
 public final class MySQLStmt {
