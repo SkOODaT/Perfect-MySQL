@@ -18,7 +18,7 @@ let package = Package(
 		.library(name: "PerfectMySQL", targets: ["PerfectMySQL"])
 	],
 	dependencies: [
-        .package(name: "PerfectCRUD", url: "https://github.com/123FLO321/Perfect-CRUD.git", .branch("swift5"))
+        .package(name: "PerfectCRUD", url: "https://github.com/SkOODaT/Perfect-CRUD.git", .branch("SKOODAT"))
     ],
 	targets: [
         .systemLibrary(
