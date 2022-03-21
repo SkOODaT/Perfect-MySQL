@@ -294,9 +294,13 @@ public final class MySQLStmt {
 	
 	private func allocated(_ a: [Int8]) -> UnsafeMutableRawBufferPointer? {
 		let buffer = UnsafeMutableRawBufferPointer.allocate(byteCount: a.count, alignment: 0)
-		let u = UnsafeRawPointer(a)
-		if let p = buffer.baseAddress {
-			memcpy(p, u, a.count)
+		a.withUnsafeBytes{ (bufferRawBufferPointer) -> Void in
+			let bufferPointer: UnsafePointer<UInt8> = bufferRawBufferPointer.baseAddress!.assumingMemoryBound(to: UInt8.self)
+			let rawPtr = UnsafeRawPointer(bufferPointer)
+			//let u = UnsafeRawPointer(a)
+			if let p = buffer.baseAddress {
+				memcpy(p, rawPtr, a.count)
+			}
 		}
 		return buffer
 	}
