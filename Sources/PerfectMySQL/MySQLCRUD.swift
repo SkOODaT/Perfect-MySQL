@@ -515,7 +515,7 @@ public struct MySQLDatabaseConfiguration: DatabaseConfigurationProtocol {
 	}
 	
 	public func sqlExeDelegate(forSQL: String) throws -> SQLExeDelegate {
-		let noPrepCommands = ["CREATE", "DROP", "ALTER", "BEGIN", "COMMIT", "ROLLBACK"]
+		let noPrepCommands = ["CREATE", "DROP", "ALTER", "BEGIN", "COMMIT", "ROLLBACK", "LOCK", "UNLOCK"]
 		if nil != noPrepCommands.first(where: { forSQL.hasPrefix($0) }) {
 			return MySQLDirectExeDelegate(connection: connection, sql: forSQL)
 		}
