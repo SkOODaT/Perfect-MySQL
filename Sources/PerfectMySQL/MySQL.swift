@@ -253,7 +253,7 @@ public final class MySQL {
 	/// Sets connect options for connect() with boolean option argument
 	@discardableResult
 	public func setOption(_ option: MySQLOpt, _ b: Bool) -> Bool {
-		var myB = my_bool(b ? 1 : 0)
+		var myB = false ? 1 : 0
 		return mysql_options(mysqlPtr, exposedOptionToMySQLOption(option), &myB) == 0
 	}
 	
