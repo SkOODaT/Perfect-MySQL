@@ -100,7 +100,7 @@ public final class MySQL {
 
 	/// If false it starts transaction which can be rolled back
 	public func autocommit(_ autocommit: Bool) -> Bool {
-		return 1 == mysql_autocommit(mysqlPtr, autocommit ? 1 : 0)
+		return mysql_autocommit(mysqlPtr, autocommit)
 	}
 
 	/// Commits the transaction
